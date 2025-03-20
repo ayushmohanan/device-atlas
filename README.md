@@ -61,7 +61,7 @@ Make sure you have installed the following prerequisites in your development or 
  
 4. ### Build the project by running:
     ```bash
-      docker-compose up -d 
+      docker-compose up -d --build
 
 5. ### Migrate DB using the following code
      ```bash
