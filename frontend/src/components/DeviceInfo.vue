@@ -56,7 +56,7 @@ export default {
     async fetchData() {
       this.fetchingData = true;
       try {
-        const response = await fetch("http://127.0.0.1:8000/v1/getSortedList");
+        const response = await fetch("http://localhost:8080/v1/getSortedList");
         if (!response.ok) throw new Error("Network response was not ok");
         this.deviceInfo = await response.json();
         this.fetchingData = false;

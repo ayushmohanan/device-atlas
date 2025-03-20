@@ -1,28 +1,23 @@
-FROM node:lts-alpine
+# Use Node.js 16 as the base image
+FROM node:16
 
-# Set the working directory
-WORKDIR /app
+# Install Vue CLI globally
+RUN npm install -g @vue/cli@~4.5.19
 
-# Install app dependencies
-COPY package.json package-lock.json ./
+# Set the working directory inside the container to /vue
+WORKDIR /vue
 
-# Install dependencies as the node user (safer than root)
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies based on the copied package files
 RUN npm install
 
-# Install global dependencies
-RUN npm install -g serve
+# Copy the rest of the application code into the container
+COPY ./ ./
 
-# Copy the app source code
-COPY . ./
+# Expose port 3000 for the Vue.js app (the default dev server port)
+EXPOSE 3000
 
-# Ensure that the app files are owned by the correct user
-RUN chown -R node:node /app
-
-# Switch to the node user
-USER node
-
-# Expose port 8080
-EXPOSE 8080
-
-# Start the app
-CMD ["npm", "run", "dev"]
+# Set the default command to run the Vue.js development server
+ENTRYPOINT ["npm", "run", "serve"]

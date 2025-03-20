@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install gd \
-    && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl bcmath opcache
+    && docker-php-ext-install pdo pdo_pgsql mbstring zip exif pcntl bcmath opcache
 # Install Composer
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 # Copy existing application directory contents

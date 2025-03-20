@@ -16,9 +16,9 @@ return [
     */
 
     'paths' => ['api/*', 'v1/*'],
-    'allowed_methods' => ['*'],
-    'allowed_origins' => ['http://localhost:8080'],  // Replace with your frontend URL
-    'allowed_headers' => ['*'],
+    'allowed_methods' => ['*'],  // Allows all HTTP methods
+    'allowed_origins' => ['http://localhost:3000'],  // Allow requests from frontend
+    'allowed_headers' => ['*'],  // Allow all headers
     'exposed_headers' => [],
     'max_age' => 0,
     'supports_credentials' => false,
