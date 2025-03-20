@@ -65,16 +65,27 @@ Make sure you have installed the following prerequisites in your development or 
 
 5. ### Migrate DB using the following code
      ```bash
-      docker-compose exec app php artisan migrate --seed
 
+     docker-compose exec app php artisan migrate
+     docker-compose exec app php artisan db:seed
+     
+     ```
+     OR
+
+     migrate --seed to migrate and seed the database for testing
+   
+     ```bash
+     
+     docker-compose exec app php artisan migrate --seed
+     
      ```
 
-6. ### Run the project
+7. ### Run the project
 
     1. - the frontend is by default served at [http://localhost:3000/]
     2. - the backend is by default served at  [http://localhost:8080/]
 
-7. ### Curl Get Sorted Tablet Lists & Store Data
+8. ### Curl Get Sorted Tablet Lists & Store Data
 
      curl --location --request GET 'http://localhost:8080/v1/getSortedList' \
     --header 'Content-Type: application/x-www-form-urlencoded' \
@@ -86,7 +97,7 @@ Make sure you have installed the following prerequisites in your development or 
 
     curl --location --request POST 'http://localhost:8080/v1/device/store?useragent=Mozilla%2F5.0%20(Linux%3B%20Android%207.0%3B%20Pixel%20C%20Build%2FNRD90M%3B%20wv)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Version%2F4.0%20Chrome%2F52.0.2743.98%20Safari%2F537.36'
 
-8. ### Setup local Environment Backend
+9. ### Setup local Environment Backend
 
    ```bash
    
