@@ -15,6 +15,7 @@ final class DeviceController extends Controller
     {
         try {
             # Fetch all device details
+            #$devices = DeviceDetail::where('primary_hardware_type', 'Tablet')->orderByRaw('CAST(os_version AS DECIMAL) DESC')->get();
             $devices = DeviceDetail::where('primary_hardware_type', 'Tablet')
             ->get();
             # Check if the data is empty
