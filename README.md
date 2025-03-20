@@ -81,7 +81,7 @@ Make sure you have installed the following prerequisites in your development or 
     --data-urlencode 'useragent=Dalvik/2.1.0 (Linux; U; Android 10; ACTAB1021 Build/QP1A.190711.020)'
 
 
-    curl --location --request POST 'http://127.0.0.1:8000/v1/device/store?useragent=Mozilla%2F5.0%20(Linux%3B%20Android%207.0%3B%20Pixel%20C%20Build%2FNRD90M%3B%20wv)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Version%2F4.0%20Chrome%2F52.0.2743.98%20Safari%2F537.36'
+    curl --location --request POST 'http://localhost:8080/v1/device/store?useragent=Mozilla%2F5.0%20(Linux%3B%20Android%207.0%3B%20Pixel%20C%20Build%2FNRD90M%3B%20wv)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Version%2F4.0%20Chrome%2F52.0.2743.98%20Safari%2F537.36'
 
 
 
