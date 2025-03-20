@@ -87,14 +87,16 @@ Make sure you have installed the following prerequisites in your development or 
     curl --location --request POST 'http://localhost:8080/v1/device/store?useragent=Mozilla%2F5.0%20(Linux%3B%20Android%207.0%3B%20Pixel%20C%20Build%2FNRD90M%3B%20wv)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Version%2F4.0%20Chrome%2F52.0.2743.98%20Safari%2F537.36'
 
 8. ### Setup local Environment Backend
+
    ```bash
+   
        .env update pgsql details
+   
        php artisan migrate #Migrate the database
        php artisan db:seed #seed the dummy values to db
-       php artisan serve #run the backend
-    
-    ---
-9. ### Setup local environment frontend
+       php artisan serve #run the backend    
+---
+10. ### Setup local environment frontend
 
     ```bash
        npm install
