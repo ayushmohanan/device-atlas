@@ -13,12 +13,10 @@ final class DeviceController extends Controller
     #Retrieve the data
     public function index(Request $request)
     {
+
         try {
             # Fetch all device details
-            #$devices = DeviceDetail::where('primary_hardware_type', 'Tablet')->orderByRaw('CAST(os_version AS DECIMAL) DESC')->get();
-            $devices = DeviceDetail::where('primary_hardware_type', 'Tablet')
-            ->orderByRaw('CAST(os_version AS DECIMAL(10,2)) DESC')
-            ->get();
+            $devices = DeviceDetail::where('primary_hardware_type', 'Tablet')->get();
             # Check if the data is empty
             if ($devices->isEmpty()) {
                 return response()->json([

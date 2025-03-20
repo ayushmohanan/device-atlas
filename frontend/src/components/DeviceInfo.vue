@@ -31,7 +31,6 @@
     </table>
   </div>
 </template>
-
 <script>
 export default {
   name: "TabInfo",
@@ -47,7 +46,19 @@ export default {
   computed: {
     filteredDeviceData() {
       if (this.deviceInfo && this.deviceInfo.data) {
-        return this.deviceInfo.data;
+        return this.deviceInfo.data
+          .slice()
+          .sort((a, b) => {
+            let aParts = a.os_version.split('.').map(Number);
+            let bParts = b.os_version.split('.').map(Number);
+
+            for (let i = 0; i < Math.max(aParts.length, bParts.length); i++) {
+              let aVal = aParts[i] || 0;
+              let bVal = bParts[i] || 0;
+              if (aVal !== bVal) return bVal - aVal;
+            }
+            return 0;
+          });
       }
       return [];
     },
@@ -59,10 +70,10 @@ export default {
         const response = await fetch("http://localhost:8080/v1/getSortedList");
         if (!response.ok) throw new Error("Network response was not ok");
         this.deviceInfo = await response.json();
-        this.fetchingData = false;
       } catch (error) {
-        this.fetchingData = false;
         console.error("Error fetching data:", error);
+      } finally {
+        this.fetchingData = false;
       }
     },
   },
