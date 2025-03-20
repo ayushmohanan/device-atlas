@@ -17,6 +17,7 @@ final class DeviceController extends Controller
             # Fetch all device details
             #$devices = DeviceDetail::where('primary_hardware_type', 'Tablet')->orderByRaw('CAST(os_version AS DECIMAL) DESC')->get();
             $devices = DeviceDetail::where('primary_hardware_type', 'Tablet')
+            ->orderByRaw('CAST(os_version AS DECIMAL(10,2)) DESC')
             ->get();
             # Check if the data is empty
             if ($devices->isEmpty()) {
@@ -85,7 +86,7 @@ final class DeviceController extends Controller
             $properties = $deviceData['properties'];
             #validate unique os version
             $existingDevice = DeviceDetail::where('model', $properties['model'] ?? null)
-            ->where('os_version', $properties['osVersion'] ?? null)
+            ->whereRaw('CAST(os_version AS DECIMAL(10,2)) = ?', [(float) ($properties['osVersion'] ?? 0)])
             ->first();
 
             if ($existingDevice) {
